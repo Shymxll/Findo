@@ -1,5 +1,6 @@
 package com.project.findo.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -9,10 +10,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.project.findo.dto.UserCreateDto;
 import com.project.findo.dto.UserUpdateDto;
+import com.project.findo.entity.User;
+import com.project.findo.service.UserService;
 
 @RestController
 @RequestMapping("/api/user")
 public class UserController {
+
+    @Autowired
+    private UserService userService;
     
     /**
      * API list for user
@@ -35,8 +41,8 @@ public class UserController {
     }
 
     @PostMapping("/add")
-    public String addUser(@RequestBody UserCreateDto userCreateDto){
-        return "Add user";
+    public User addUser(@RequestBody UserCreateDto userCreateDto){
+        return userService.addUser(userCreateDto);
     }
 
     @PostMapping("/update")
