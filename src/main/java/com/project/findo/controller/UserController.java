@@ -41,7 +41,7 @@ public class UserController {
     }
 
     @PostMapping("/add")
-    public User addUser(@RequestBody UserCreateDto userCreateDto){
+    public String addUser(@RequestBody UserCreateDto userCreateDto){
         return userService.addUser(userCreateDto);
     }
 

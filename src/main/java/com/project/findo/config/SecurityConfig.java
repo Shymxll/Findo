@@ -27,6 +27,9 @@ public class SecurityConfig {
         "/logout",
         "/user",
         "/user/**",
+        "/api/register",
+        "/api/fpost/all"
+
     };
 
     final String[] SECURED = new String [] {
@@ -41,10 +44,12 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         
-       http.csrf(csrf -> csrf.disable()).authorizeHttpRequests(
-            request -> request.
-            requestMatchers(UNSECURED).permitAll()
+       http
+       .csrf(csrf -> csrf.disable())
+       .authorizeHttpRequests((request) -> request
             .requestMatchers(SECURED).authenticated()
+            .requestMatchers(UNSECURED).permitAll()
+            
             )
             .formLogin(Customizer.withDefaults())
             .httpBasic(Customizer.withDefaults()); 
@@ -54,7 +59,7 @@ public class SecurityConfig {
 
     @Bean
     public PasswordEncoder passwordEncoder() {
-        return NoOpPasswordEncoder.getInstance();
+        return new BCryptPasswordEncoder();
     }
 
 }

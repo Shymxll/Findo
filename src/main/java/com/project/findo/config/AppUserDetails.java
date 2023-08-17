@@ -31,6 +31,9 @@ public class AppUserDetails implements UserDetailsService{
         } else{
             userName = user.get(0).getEmail();
             password = user.get(0).getPsw();
+            System.out.println("User details found for the user : " + username);
+            System.out.println("User details found for the user : " + password);
+    
             authorities = new ArrayList<>();
             authorities.add(new SimpleGrantedAuthority(user.get(0).getRole()));
         }

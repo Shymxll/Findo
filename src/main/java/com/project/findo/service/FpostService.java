@@ -54,7 +54,7 @@ public class FpostService {
                 .build();
             return fpostResponse;
         }
-        return null;
+        return FpostResponse.builder().build();
          
     }
 
