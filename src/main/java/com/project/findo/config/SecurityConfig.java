@@ -23,18 +23,17 @@ public class SecurityConfig {
         "/webjars/**",
         "/h2-console/**",
         "/login",
-        "/register",
-        "/logout",
-        "/user",
-        "/user/**",
-        "/api/register",
-        "/api/fpost/all"
+        "/api/register"
+    
 
     };
 
     final String[] SECURED = new String [] {
-        "/fpost",
-        "/fpost/**",
+        "/api/fpost/all",
+        "/api/fpost/{id}",
+        "/api/fpost/add",
+        "/api/fpost/update",
+        "/api/fpost/delete"
     };
 
 

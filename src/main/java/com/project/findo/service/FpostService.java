@@ -1,5 +1,6 @@
 package com.project.findo.service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -7,16 +8,22 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 import com.project.findo.repository.FpostRepository;
+import com.project.findo.repository.UserRepository;
 import com.project.findo.response.FpostResponse;
+import com.project.findo.dto.FpostCreateDto;
+import com.project.findo.dto.FpostUpdateDto;
 import com.project.findo.entity.Fpost;
+import com.project.findo.entity.User;
 
 @Service
 public class FpostService {
 
     private FpostRepository fpostRepository;
+    private UserRepository userRepository;
 
-    public FpostService(FpostRepository fpostRepository){
+    public FpostService(FpostRepository fpostRepository, UserRepository userRepository){
         this.fpostRepository = fpostRepository;
+        this.userRepository = userRepository;
     }
     
     /**
@@ -58,15 +65,74 @@ public class FpostService {
          
     }
 
-    public String addFpost(){
-        return "Add post of found things";
+    public String addFpost(FpostCreateDto fpostCreateDto){
+        // find user by id
+        long userId = fpostCreateDto.getUserId();
+        Optional<User> optionalUser = userRepository.findById(userId);
+        if(optionalUser.isPresent()){
+            User user = optionalUser.get();
+            Fpost fpost = Fpost.builder()
+                .user(user)
+                .text(fpostCreateDto.getText())
+                .category(fpostCreateDto.getCategory())
+                .country(fpostCreateDto.getCountry())
+                .city(fpostCreateDto.getCity())
+                .question(fpostCreateDto.getQuestion())
+                .answer(fpostCreateDto.getAnswer())
+                .mapLocation(fpostCreateDto.getMapLocation())
+                .createdDate(new Date().toString())
+                .updatedDate(new Date().toString())
+                .build();
+            try {
+                fpostRepository.save(fpost);
+            } catch (Exception e) {
+                return "Error";
+            };
+            return "Success";
+        }
+        return "Error";
     }
     
-    public String updateFpost(){
-        return "Update post of found things";
+    public String updateFpost(FpostUpdateDto fpostUpdateDto){
+        // find user by id
+        long id = fpostUpdateDto.getId();
+        Optional<Fpost> optionalFpost = fpostRepository.findById(id);
+        if(optionalFpost.isPresent()){
+            Fpost fpost = optionalFpost.get();
+            Fpost uptFpost = Fpost.builder()
+                .id(fpost.getId())
+                .user(fpost.getUser())
+                .text(fpostUpdateDto.getText())
+                .category(fpostUpdateDto.getCategory())
+                .country(fpostUpdateDto.getCountry())
+                .city(fpostUpdateDto.getCity())
+                .question(fpostUpdateDto.getQuestion())
+                .answer(fpostUpdateDto.getAnswer())
+                .mapLocation(fpostUpdateDto.getMapLocation())
+                .createdDate(fpost.getCreatedDate())
+                .updatedDate(new Date().toString())
+                .build();
+            try {
+                fpostRepository.save(uptFpost);
+            } catch (Exception e) {
+                return "Error";
+            };
+            return "Success";
+        }
+        return "Error";
+        
     }
 
     public String deleteFpost(Long id){
-        return "Delete post of found things";
+        Optional<Fpost> optionalFpost = fpostRepository.findById(id);
+        if(optionalFpost.isPresent()){
+            try {
+                fpostRepository.deleteById(id);
+            } catch (Exception e) {
+                return "Error";
+            };
+            return "Success";
+        }
+        return "Error";
     }
 }

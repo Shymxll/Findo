@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.project.findo.dto.FpostCreateDto;
 import com.project.findo.dto.FpostUpdateDto;
+import com.project.findo.service.FpostService;
 
 @RestController
 @RequestMapping("/api/fpost")
@@ -24,6 +25,12 @@ public class FpostController {
      * 
      */
 
+     private FpostService fpostService;
+
+      public FpostController(FpostService fpostService){
+            this.fpostService = fpostService;
+        }
+
     @GetMapping("/all")
     public String getAllFpost(){
         return "All post of found things";
@@ -36,7 +43,7 @@ public class FpostController {
 
     @PostMapping("/add")
     public String addFpost(@RequestBody FpostCreateDto fpostCreateDto){
-        return "Add post of found things";
+        return fpostService.addFpost(fpostCreateDto);
     }
     
     @PostMapping("/update")
