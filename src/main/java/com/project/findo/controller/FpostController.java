@@ -1,5 +1,7 @@
 package com.project.findo.controller;
 
+import java.util.List;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -9,6 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.project.findo.dto.FpostCreateDto;
 import com.project.findo.dto.FpostUpdateDto;
+import com.project.findo.entity.Fpost;
+import com.project.findo.response.FpostResponse;
 import com.project.findo.service.FpostService;
 
 @RestController
@@ -30,15 +34,17 @@ public class FpostController {
       public FpostController(FpostService fpostService){
             this.fpostService = fpostService;
         }
+        
+
 
     @GetMapping("/all")
-    public String getAllFpost(){
-        return "All post of found things";
+    public List<Fpost> getAllFpost(){
+        return fpostService.getAllFpost();
     }
 
     @GetMapping("/{id}")
-    public String getFpostById(@RequestParam Long id){
-        return "Post of found things by id";
+    public FpostResponse getFpostById(@RequestParam Long id){
+        return fpostService.getFpostById(id);
     }
 
     @PostMapping("/add")
@@ -48,11 +54,11 @@ public class FpostController {
     
     @PostMapping("/update")
     public String updateFpost(@RequestBody FpostUpdateDto fpostUpdateDto){
-        return "Update post of found things";
+        return fpostService.updateFpost(fpostUpdateDto);
     }
 
     @GetMapping("/delete")
     public String deleteFpost(@RequestParam Long id){
-        return "Delete post of found things";
+        return fpostService.deleteFpost(id);
     }
 }
