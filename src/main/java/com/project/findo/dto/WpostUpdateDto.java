@@ -1,18 +1,18 @@
 package com.project.findo.dto;
 
+import lombok.Data;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Data;
 import lombok.NoArgsConstructor;
+
 
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class WpostCreateDto {
-
+public class WpostUpdateDto {
     
-    Long userId;
+    long id;
     String text;
     String category;
     String country;
@@ -20,6 +20,4 @@ public class WpostCreateDto {
     String answer;
     String city;
     String mapLocation;
-
-     
 }

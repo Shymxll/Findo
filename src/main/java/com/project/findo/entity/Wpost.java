@@ -39,6 +39,8 @@ public class Wpost {
     private String text;
     private String category;
     private String country;
+    private String question;
+    private String answer;
     private String city;
     private String mapLocation;  
     private String createdDate;
