@@ -46,6 +46,7 @@ public class FpostService {
             FpostResponse fpostResponse = FpostResponse.builder()
                 .id(fpost.getId())
                 .text(fpost.getText())
+                .userId(fpost.getUser().getId())
                 .category(fpost.getCategory())
                 .question(fpost.getQuestion())
                 .country(fpost.getCountry())
