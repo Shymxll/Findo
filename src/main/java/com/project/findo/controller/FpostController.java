@@ -18,7 +18,6 @@ import com.project.findo.service.FpostService;
 @RestController
 @RequestMapping("/api/fpost")
 public class FpostController {
-    
     /**
      * API list for post of found things
      * /api/fpost/all -> get all post of found things
@@ -38,7 +37,7 @@ public class FpostController {
 
 
     @GetMapping("/all")
-    public List<Fpost> getAllFpost(){
+    public List<FpostResponse> getAllFpost(){
         return fpostService.getAllFpost();
     }
 
@@ -49,6 +48,7 @@ public class FpostController {
 
     @PostMapping("/add")
     public String addFpost(@RequestBody FpostCreateDto fpostCreateDto){
+       
         return fpostService.addFpost(fpostCreateDto);
     }
     

@@ -14,6 +14,7 @@ public class WpostResponse {
 
     private Long id;
     private String text;
+    private Long userId;
     private String category;
     private String question;
     private String country;

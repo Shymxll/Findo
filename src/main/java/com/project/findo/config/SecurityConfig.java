@@ -33,7 +33,13 @@ public class SecurityConfig {
         "/api/fpost/{id}",
         "/api/fpost/add",
         "/api/fpost/update",
-        "/api/fpost/delete"
+        "/api/fpost/delete",
+        "/api/fpost/add",
+        "/api/wpost/all",
+        "/api/wpost/{id}",
+        "/api/wpost/add",
+        "/api/wpost/update",
+        "/api/wpost/delete"
     };
 
 

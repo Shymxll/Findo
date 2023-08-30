@@ -22,7 +22,6 @@ public class UserController {
     
     /**
      * API list for user
-     * 
      *  /api/user/all -> get all user
      * /api/user/{id} -> get user by id
      * /api/user/add -> add user

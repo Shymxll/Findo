@@ -1,5 +1,7 @@
 package com.project.findo.controller;
 
+import java.util.List;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -8,6 +10,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.project.findo.dto.WpostCreateDto;
+import com.project.findo.dto.WpostUpdateDto;
+import com.project.findo.response.FpostResponse;
+import com.project.findo.response.WpostResponse;
+import com.project.findo.service.WpostService;
 
 
 
@@ -25,32 +31,35 @@ public class WpostController {
      * 
      */
 
+    private WpostService wpostService;
+
+    public WpostController(WpostService wpostService){
+        this.wpostService = wpostService;
+    }
+
     @GetMapping("/all")
-    public String getAllWpost(){
-        return "All post of wanted things";
+    public List<WpostResponse> getAllWpost(){
+        return wpostService.getAllWpost();
     }
 
     @GetMapping("/{id}")
-    public String getWpostById(@RequestParam Long id){
-        return "Post of wanted things by id";
+    public WpostResponse getWpostById(@RequestParam Long id){
+        return wpostService.getWpostById(id);
     }
 
     @PostMapping("/add")
     public String addWpost(@RequestBody WpostCreateDto wpostCreateDto){
-        return "Add post of wanted things";
+        return wpostService.addWpost(wpostCreateDto);
     }
     
     @PostMapping("/update")
-    public String updateWpost(@RequestBody WpostCreateDto wpostCreateDto){
-        return "Update post of wanted things";
+    public String updateWpost(@RequestBody WpostUpdateDto wpostCreateDto){
+        return wpostService.updateWpost(wpostCreateDto);
     }
 
     @GetMapping("/delete")
     public String deleteWpost(@RequestParam Long id){
-        return "Delete post of wanted things";
+        return wpostService.deleteWpost(id);
     }
 
-    
-
-   
 }
