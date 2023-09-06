@@ -10,4 +10,6 @@ public class FindoApplication {
 		SpringApplication.run(FindoApplication.class, args);
 	}
 
+
+
 }

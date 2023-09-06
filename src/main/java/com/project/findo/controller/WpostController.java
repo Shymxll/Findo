@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.project.findo.dto.WpostCreateDto;
 import com.project.findo.dto.WpostUpdateDto;
-import com.project.findo.response.FpostResponse;
 import com.project.findo.response.WpostResponse;
 import com.project.findo.service.WpostService;
 

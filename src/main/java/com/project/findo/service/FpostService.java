@@ -11,12 +11,10 @@ import org.springframework.stereotype.Service;
 import com.project.findo.repository.FpostRepository;
 import com.project.findo.repository.UserRepository;
 import com.project.findo.response.FpostResponse;
-import com.project.findo.response.WpostResponse;
 import com.project.findo.dto.FpostCreateDto;
 import com.project.findo.dto.FpostUpdateDto;
 import com.project.findo.entity.Fpost;
 import com.project.findo.entity.User;
-import com.project.findo.entity.Wpost;
 
 @Service
 public class FpostService {

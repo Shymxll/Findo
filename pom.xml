@@ -15,8 +15,9 @@
 	<name>findo</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
-	</properties>
 		<java.version>17</java.version>
+	</properties>
+		
 	<dependencies>
 
 		<dependency>

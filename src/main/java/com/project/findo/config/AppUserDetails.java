@@ -10,7 +10,6 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.project.findo.entity.User;
@@ -25,7 +24,7 @@ public class AppUserDetails implements UserDetailsService{
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        String userName, password,hashPsw;
+        String userName, password;
         List<GrantedAuthority> authorities;
         List<User> user = userRepository.findByEmail(username);
         if (user.size() == 0) {

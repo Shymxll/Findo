@@ -5,7 +5,6 @@ import org.hibernate.annotations.OnDeleteAction;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import jakarta.annotation.Generated;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -36,7 +35,6 @@ public class Fpost {
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
     private User user;
-    
     private String text;
     private String category;
     private String question;
