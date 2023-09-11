@@ -32,4 +32,5 @@ public class LoginController {
     public String register(@RequestBody UserCreateDto userCreateDto) {
             return userService.addUser(userCreateDto);
     }
+
 }

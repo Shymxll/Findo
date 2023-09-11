@@ -9,6 +9,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Date;
+
 @Data
 @Entity
 @AllArgsConstructor
@@ -25,7 +27,7 @@ public class User {
     private String phone;
     private String psw;
     private String role;
-
-    
+    private Date createdDate;
+    private Date updatedDate;
 
 }

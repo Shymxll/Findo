@@ -2,11 +2,10 @@ package com.project.findo.service;
 
 import org.springframework.stereotype.Service;
 
-import com.project.findo.repository.FpostRepository;
-import com.project.findo.repository.WpostRepository;
+import com.project.findo.repository.PostRepository;
 
 @Service
 public class SearchService {
-    private WpostRepository wpostRepository;
-    private FpostRepository fpostRepository;
+
+    private PostRepository postRepository;
 }
