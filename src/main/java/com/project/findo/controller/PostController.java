@@ -61,4 +61,10 @@ public class PostController {
     public List<PostResponse> getReversePostsByRange(@RequestParam Long limit , @RequestParam Long offset){
         return postService.findReversePostsBeforeIdBy(limit, offset);
     }
+
+
+
+
+
+
 }
