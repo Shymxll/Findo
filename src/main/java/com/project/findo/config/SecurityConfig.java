@@ -43,7 +43,7 @@ public class SecurityConfig {
     };
 
     final String[] SECURED = new String [] {
-
+    "/api/test",
     };
 
     //filter chain for authentication
