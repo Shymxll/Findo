@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Optional;
 
 
+import jakarta.annotation.Nullable;
 import org.springframework.stereotype.Service;
 
 import com.project.findo.repository.PostRepository;
@@ -15,6 +16,7 @@ import com.project.findo.dto.PostCreateDto;
 import com.project.findo.dto.PostUpdateDto;
 import com.project.findo.entity.Post;
 import com.project.findo.entity.User;
+
 
 @Service
 public class PostService {
@@ -31,7 +33,6 @@ public class PostService {
         if (post.isPresent() && post.get().getStatus() == 1){ // check if post is exist and status is 1 (active)
             return PostResponse.builder()
                     .id(post.get().getId())
-                    .worf(post.get().getWorf())
                     .text(post.get().getText())
                     .image(post.get().getImage())
                     .category(post.get().getCategory())
@@ -55,7 +56,6 @@ public class PostService {
                     .text(postCreateDto.getText())
                     .category(postCreateDto.getCategory())
                     .image(postCreateDto.getImage())
-                    .worf(postCreateDto.getWorf())
                     .country(postCreateDto.getCountry())
                     .city(postCreateDto.getCity())
                     .question(postCreateDto.getQuestion())
@@ -107,7 +107,6 @@ public class PostService {
               for (Post post : posts.get()){
                 PostResponse postResponse = PostResponse.builder()
                           .id(post.getId())
-                          .worf(post.getWorf())
                           .text(post.getText())
                           .image(post.getImage())
                           .category(post.getCategory())
@@ -124,6 +123,38 @@ public class PostService {
        return new ArrayList<>();
     }
 
+    public List<PostResponse> searchBy(
+          //  category, city, country,text, worf, createdDate,limit, offset
+             String category,
+             String city,
+             String country,
+             String text,
+            Date createdDate,
+            Long limit,
+            Long offset
+    ) {
+       //search with jpa by city , country , category , worf , created_date, but maybe null any field, so we use @Nullable ,
+        Optional<List<Post>> posts = postRepository.searchBy(category, city, country,text, createdDate,limit, offset);
+        if (posts.isPresent()){
+            List<PostResponse> postResponses = new ArrayList<>();
+            for (Post post : posts.get()){
+                PostResponse postResponse = PostResponse.builder()
+                        .id(post.getId())
+                        .text(post.getText())
+                        .image(post.getImage())
+                        .category(post.getCategory())
+                        .question(post.getQuestion())
+                        .country(post.getCountry())
+                        .city(post.getCity())
+                        .mapLocation(post.getMapLocation())
+                        .createdDate(post.getCreatedDate())
+                        .build();
+                postResponses.add(postResponse);
+            }
+            return postResponses;
+        }
+        return new ArrayList<>();
+    }
 }
 
 

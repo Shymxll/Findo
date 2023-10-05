@@ -1,19 +1,16 @@
 package com.project.findo.controller;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.project.findo.dto.PostCreateDto;
 import com.project.findo.dto.PostUpdateDto;
 import com.project.findo.response.PostResponse;
 import com.project.findo.service.PostService;
+
 
 @RestController
 @RequestMapping("/api/post")
@@ -37,7 +34,7 @@ public class PostController {
 
 
     @GetMapping("/{id}")
-    public PostResponse getPostById(@RequestParam Long id){
+    public PostResponse getPostById(@PathVariable Long id){
         return postService.getPostById(id);
     }
 
@@ -62,9 +59,19 @@ public class PostController {
         return postService.findReversePostsBeforeIdBy(limit, offset);
     }
 
+   //search by city , country , category , worf , created_date;
+    @PostMapping("/search")
+    public List<PostResponse> searchBy(
+            @RequestParam(required = false) String category,
+            @RequestParam(required = false) String city,
+            @RequestParam(required = false) String country,
+            @RequestParam(required = false) String text,
+            @RequestParam(required = false) Date createdDate,
+            @RequestParam Long limit,
+            @RequestParam Long offset
+    ){
 
+        return postService.searchBy( category, city, country,text, createdDate,limit, offset);
 
-
-
-
+      }
 }

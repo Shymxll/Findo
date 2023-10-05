@@ -14,7 +14,6 @@ import java.util.Date;
 public class PostResponse {
 
     private long id;
-    private short worf;
     private String text;
     private String image;
     private String category;

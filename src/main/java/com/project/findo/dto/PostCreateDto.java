@@ -15,7 +15,6 @@ public class PostCreateDto {
     String text;
     String category;
     String image;
-    short worf;
     String country;
     String city;
     String question;

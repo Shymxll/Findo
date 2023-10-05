@@ -46,7 +46,6 @@ public class Post {
     private String city;
     private String mapLocation;
     private short status;
-    private short worf; // 0: wanted, 1: finded
     private Date createdDate;
     private Date updatedDate;
 

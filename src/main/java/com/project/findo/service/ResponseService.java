@@ -44,7 +44,7 @@ public class ResponseService {
         if (response.isPresent()) {
             RespResponse respResponse = new RespResponse();
             respResponse.setResponse(response.get().getResponse());
-            respResponse.setName(response.get().getUser().getName());
+            respResponse.setName(response.get().getUser().getFirstname());
             return respResponse;
         }
         return RespResponse.builder().build();
@@ -69,7 +69,7 @@ public class ResponseService {
                         respResponse.setResponse(response.getResponse());
                         respResponse.setPhone(response.getUser().getPhone());
                         respResponse.setEmail(response.getUser().getEmail());
-                        respResponse.setName(response.getUser().getName());
+                        respResponse.setName(response.getUser().getFirstname());
                         respResponses.add(respResponse);
                     }
                     return respResponses;
@@ -91,7 +91,7 @@ public class ResponseService {
                 if (responses.isPresent()) {
                     for (Response response : responses.get()) {
                         UserRespResponse userRespResponse = new UserRespResponse();
-                        userRespResponse.setName(response.getUser().getName());
+                        userRespResponse.setName(response.getUser().getFirstname());
                         userRespResponse.setResponse(response.getResponse());
                         userRespResponse.setPostAnswer(response.getPost().getAnswer());
                         userRespResponses.add(userRespResponse);
@@ -155,7 +155,7 @@ public class ResponseService {
                     respResponse.setResponse(response.getResponse());
                     respResponse.setPhone(response.getUser().getPhone());
                     respResponse.setEmail(response.getUser().getEmail());
-                    respResponse.setName(response.getUser().getName());
+                    respResponse.setName(response.getUser().getFirstname());
                     return List.of(respResponse);
                 }
             }
