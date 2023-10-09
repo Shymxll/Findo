@@ -1,4 +1,4 @@
-name: Build and Deploy Forvi to Aws
+name: Build and Deploy Spring app to Aws
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
 
 jobs:
   build-deploy:
-    name: Build and Deploy Forbi to Aws
+    name: Build and Deploy Spring app to Aws
     runs-on: ubuntu-latest
     steps:
       - name:  Checkout code
