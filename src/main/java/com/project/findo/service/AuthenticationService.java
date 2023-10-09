@@ -13,6 +13,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
+
 @Service
 @RequiredArgsConstructor
 public class AuthenticationService {
@@ -27,6 +29,9 @@ public class AuthenticationService {
             .firstname(request.getFirstname())
             .lastname(request.getLastname())
             .email(request.getEmail())
+            .phone(request.getPhone())
+            .createdDate(new Date())
+            .updatedDate(new Date())
             .psw(passwordEncoder.encode(request.getPassword()))
             .role(Role.USER)
             .build();
@@ -38,7 +43,6 @@ public class AuthenticationService {
     }
 
     public AuthenticationResponse authenticate(AuthenticationDto request) {
-        System.out.println("authenticate");
         authenticationManager.authenticate(
             new UsernamePasswordAuthenticationToken(
                 request.getEmail(),
@@ -46,9 +50,7 @@ public class AuthenticationService {
                 request.getPassword()
             )
         );
-            System.out.println(request.getEmail());
             var user = userRepository.findByEmail(request.getEmail());
-            System.out.println(user);
             var jwtToken = jwtService.generateToken(user.get());
             return AuthenticationResponse.builder()
                 .token(jwtToken)

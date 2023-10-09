@@ -32,17 +32,9 @@ public class AuthenticationController{
     public ResponseEntity<AuthenticationResponse> authenticate(
         @RequestBody AuthenticationDto request
     ) {
-        System.out.println(request);
+
         return ResponseEntity.ok(service.authenticate(request));
     }
 
-    //test
-    @PostMapping("/test")
-    public ResponseEntity<String> test(
-        @RequestBody String request
-    ) {
-        System.out.println(request);
-        return ResponseEntity.ok(request);
-    }
 
 }
