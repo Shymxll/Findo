@@ -1,6 +1,6 @@
-# Findo - Lost and Found Web Service
+# Forvi - Lost and Found Web Service
 
-Findo is a Java-based backend application developed using Spring Boot. It serves as a Lost and Found Web Service, enabling users to post and find details about lost items. The service provides simple and efficient endpoints for handling CRUD (Create, Read, Update, Delete) operations on lost items.
+Forvi is a Java-based backend application developed using Spring Boot. It serves as a Lost and Found Web Service, enabling users to post and find details about lost items. The service provides simple and efficient endpoints for handling CRUD (Create, Read, Update, Delete) operations on lost items.
 
 ## Features
 
@@ -12,9 +12,11 @@ Findo is a Java-based backend application developed using Spring Boot. It serves
 
 - **Delete Lost Item:** Users can remove their lost item post if they have found the item or no longer wish to keep it listed.
 
+- **Respond to Lost Item:** Users can respond to a lost item post by providing their contact details and a message to the poster.
+
 ## Getting Started
 
-These instructions will help you set up and run the Findo Lost and Found Web Service on your local machine.
+These instructions will help you set up and run the Forvi Lost and Found Web Service on your local machine.
 
 ### Prerequisites
 
